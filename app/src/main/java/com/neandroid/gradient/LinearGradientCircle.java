@@ -86,10 +86,28 @@ public class LinearGradientCircle extends View {
         canvas.drawCircle(700, 700, 80, mPaint);
 
 
-        mSweepGradient = new SweepGradient(this.getWidth() / 2, this.getHeight() / 2, new int[]{Color.TRANSPARENT, Color.RED, Color.TRANSPARENT, Color.YELLOW, Color.BLUE}, null);
+        mSweepGradient = new SweepGradient(this.getWidth() / 5, this.getHeight() / 2, new int[]{Color.TRANSPARENT, Color.RED, Color.TRANSPARENT, Color.YELLOW, Color.BLUE}, null);
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setShader(mSweepGradient);
-        canvas.drawCircle(this.getWidth() / 2, this.getHeight() / 2, 200, mPaint);
+        canvas.drawCircle(this.getWidth() / 5, this.getHeight() / 2, 200, mPaint);
+
+
+        int radius = 200;
+        //mLinearGradient = new LinearGradient(this.getWidth() / 2 - radius, this.getHeight() / 2 + radius, this.getWidth() / 2 + radius, this.getHeight() / 2 + radius, new int[]{this.getResources().getColor(R.color.color_gradient_start), this.getResources().getColor(R.color.color_gradient_end), this.getResources().getColor(R.color.color_gradient_start)}, null, Shader.TileMode.CLAMP);
+
+        //RadialGradient radialGradient = new RadialGradient(this.getWidth() / 2, this.getHeight() / 2, radius, 0x80ff1493, 0x0Dff1493, Shader.TileMode.CLAMP);
+
+        //int[] colors = new int[]{0xffff0000, 0xff00ff00, 0xff0000ff, 0xffffff00};
+        //float[] stops = new float[]{0f, 0.2f, 0.5f, 1f};
+
+        int[] colors = new int[]{0x80ff1493, 0x0Dff1493};
+        float[] stops = new float[]{0f, 1f};
+        RadialGradient radialGradient = new RadialGradient(this.getWidth() / 2, this.getHeight() / 2, radius, colors, stops, Shader.TileMode.CLAMP);
+
+        mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+        mPaint.setShader(radialGradient);
+        canvas.drawCircle(this.getWidth() / 2, this.getHeight() / 2, radius, mPaint);
     }
 }
